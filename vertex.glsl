@@ -3,7 +3,6 @@ uniform float theta;
 attribute vec2 vPosition;
 attribute vec3 vColor;
 varying vec3 fColor;
-
 void main() {
   fColor = vColor; 
   // vec2 TransformedPos  = vec2(vPosition.x - 0.5, vPosition.y + 0.5); 

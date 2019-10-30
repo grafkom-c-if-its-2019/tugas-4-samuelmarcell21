@@ -167,7 +167,6 @@
     drawShapes2(gl.TRIANGLE_STRIP, vertices5, 540);
   
     requestAnimationFrame(render2);
-
 }
   // render();
   render2();
