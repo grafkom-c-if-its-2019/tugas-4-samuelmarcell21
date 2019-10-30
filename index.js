@@ -220,21 +220,10 @@
 
   function onmousedown(event, points) {
 
-    // find x and y of click
     var x = event.clientX, y = event.clientY;
-
-    // canvas midX and midY
     var midX = canvas.width/2, midY = canvas.height/2;
-
-    // get bounding box of the mouse click's target (canvas object)
     var rect = event.target.getBoundingClientRect();
-
-    // convert the x and y value to webgl space
-    // desired = -1.0 to +1.0
-    // (x - 0) - midpoint => -/+ of 0 (-320 to +320) => / midpoint = -1.0 to +1.0
     x = ((x - rect.left) - midX) / midX;
-
-    // midpoint - (y-0) => -/+ of 0 (-240 to +240) => / midpoint = -1.0 to +1.0
     y = (midY - (y - rect.top)) / midY;
 
     console.log(x + "  " + y);
