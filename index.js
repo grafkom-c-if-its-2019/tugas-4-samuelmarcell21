@@ -25,77 +25,8 @@
 
 
     // resizer();
-
-    var linesVertices = new Float32Array([
-      -0.5+0.128125,  0.30833333333333335,    0.9, 0.0, 0.9,
-      -0.5+0.26875,  0.3125,     0.0, 0.9, 0.9
-        ]);
-
-    var linesVerticess = new Float32Array([
-      -0.5+-0.271875,  -0.30416666666666664,    0.9, 0.0, 0.9,
-      -0.5+-0.134375,  -0.3,    0.0, 0.9, 0.9
-        ]);
-
-
-    var vertices = [];
-    var vertices1 = [];
-    var vertices2 = [];
-    var vertices3 = [];
     var vertices4 = [];
     var vertices5 = [];
-
-
-    for (var i=-180; i<=90; i+=1) {
-      // degrees to radians
-      var j = i * Math.PI / 180;
-      // X Y Z
-      var vert1 = [
-        -0.5 + Math.sin(j)*0.27,
-        0.3+Math.cos(j)*0.4,    0.9, 0.0, 0.9
-
-        // 0,
-      ];
-      vertices = vertices.concat(vert1);
-    }
-
-    for (var i=0; i<=270; i+=1) {
-      // degrees to radians
-      var k = i * Math.PI / 180;
-      // X Y Z
-      var vert2 = [
-        -0.5 + Math.sin(k)*0.13,
-        -0.3 + Math.cos(k)*0.2,    0.0, 0.9, 0.9
-
-        // 0,
-      ];
-      vertices1 = vertices1.concat(vert2);
-    }
-
-    for (var i=-180; i<=90; i+=1) {
-      // degrees to radians
-      var l = i * Math.PI / 180;
-      // X Y Z
-      var vert3 = [
-        -0.5 + Math.sin(l)*0.13,
-        0.3 + Math.cos(l)*0.2,    0.9, 0.0, 0.9
-
-        // 0,
-      ];
-      vertices2 = vertices2.concat(vert3);
-    }
-
-    for (var i=0; i<=270; i+=1) {
-      // degrees to radians
-      var m = i * Math.PI / 180;
-      // X Y Z
-      var vert4 = [
-        -0.5 + Math.sin(m)*0.27,
-        -0.3 + Math.cos(m)*0.4,    0.0, 0.9, 0.9
-
-        // 0,
-      ];
-      vertices3 = vertices3.concat(vert4);
-    }
 
     for (var i=-180; i<=90; i+=1) {
       // degrees to radians
@@ -194,35 +125,6 @@
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
       gl.drawArrays(type, 0, n);
     }  
-
-    var translation = gl.getUniformLocation(program, 'translation');
-    var translationVector = [0.0, -0.5, 0.0];
-    gl.uniform3fv(translation, translationVector);
-  
-    var thetaLocation = gl.getUniformLocation(program, 'theta');
-    var theta = 0.0; 
-
-  function render(){
-      // Bersihkan layar jadi hitam
-      gl.useProgram(program);
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
-  
-      // Bersihkan buffernya canvas
-      gl.clear(gl.COLOR_BUFFER_BIT);
-
-      
-      theta += 0.0134;
-      gl.uniform1f(thetaLocation, theta);
-  
-      drawShapes(gl.LINE_STRIP, vertices, 270);
-      drawShapes(gl.LINE_STRIP, vertices1, 270);
-      drawShapes(gl.LINE_STRIP, vertices2, 270);
-      drawShapes(gl.LINE_STRIP, vertices3, 270);
-      drawShapes(gl.LINES, linesVertices, 2);
-      drawShapes(gl.LINES, linesVerticess, 2);    
-      requestAnimationFrame(render);
-
-  }
 
     var scaleXLocation = gl.getUniformLocation(program2, 'scaleX');
     // var scaleYLocation = gl.getUniformLocation(program2, 'scaleY');
