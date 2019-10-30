@@ -126,25 +126,42 @@
       gl.drawArrays(type, 0, n);
     }  
 
-    var scaleXLocation = gl.getUniformLocation(program2, 'scaleX');
-    // var scaleYLocation = gl.getUniformLocation(program2, 'scaleY');
-    var scaleX = 1.0;
-    // var scaleY = 1.0;
-    var melebar = 1;  
+  var thetaLoc1 = gl.getUniformLocation(program2, 'theta1'); 
+  var transLoc1 = gl.getUniformLocation(program2, 'trans1');
+  var thetaA1 = [10, 20, 0];
+  var trans1 = [0, 0, 0]; 
+  var X = 0.0080;
+  var Y = 0.0090;
+  var Z = 0.0130;
 
   function render2(){
     // Bersihkan layar jadi hitam
     gl.useProgram(program2);
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
-  
+
     // Bersihkan buffernya canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    if (scaleX >= 1) melebar = -1;
-    else if (scaleX <= -1) melebar = 1; 
-    scaleX += 0.0134 * melebar;
-    gl.uniform1f(scaleXLocation, scaleX);
-    // gl.uniform1f(scaleYLocation, scaleY);
+    if(trans1[0] >= 0.4*0.8 || trans1[0] <= -0.3*0.8 ){
+      X *= -1;
+    }
+    trans1[0] += X;
+  
+    if(trans1[1] >= 0.6*0.8 || trans1[1] <= -0.8*0.8 ){
+      Y *= -1;
+    }
+  
+    trans1[1] += Y;
+  
+    if(trans1[2] >= 0.7*0.8 || trans1[2] <= -0.6*0.8){
+      Z *= -1;
+    }
+    trans1[2] += Z;
+  
+    gl.uniform3fv(transLoc1, trans1);
+    thetaA1[1] += 0.134;
+    gl.uniform3fv(thetaLoc1, thetaA1);  
+    // gl.uniform1f(scaleYLocation, scaleY);  
 
     drawShapes2(gl.TRIANGLE_STRIP, vertices4, 540);
     drawShapes2(gl.TRIANGLE_STRIP, vertices5, 540);
