@@ -16,6 +16,5 @@ void main() {
     0.0, 0.0, 0.0 , 1.0
   );
 
-  gl_Position = (vec4(vPosition, 0.0, 1.0)-vec4(0.6, 0.0, 0.0, 0.0)) * scale+vec4(0.6, 0.0, 0.0, 0.0);
-
+  gl_Position = vec4(vPosition, 0.0, 1.0) ;
 }

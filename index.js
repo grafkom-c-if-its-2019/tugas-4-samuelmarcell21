@@ -33,34 +33,34 @@
       var n = i * Math.PI / 180;
       // X Y Z
       var vert1 = [
-      0.6 + Math.sin(n)*0.25,
-      0.3 + Math.cos(n)*0.4,    1.0, 0.0, 0.0
+      0 + Math.sin(n)*0.05,
+      0.1 + Math.cos(n)*0.07,    1.0, 0.0, 0.0
         // 0,
       ];
   
       DONUT:
       var vert2 = [
-      0.6 + Math.sin(n)*0.12,
-      0.3 + Math.cos(n)*0.181,    0.0, 1.0, 0.0
+      0 + Math.sin(n)*0.12,
+      0.1 + Math.cos(n)*0.181,    0.0, 1.0, 0.0
       ];
       vertices4 = vertices4.concat(vert1);
       vertices4 = vertices4.concat(vert2);
     }
-
+  
     for (var i=0; i<=270; i+=1) {
       // degrees to radians
       var o = i * Math.PI / 180;
       // X Y Z
       var vert1 = [
-      0.6 + Math.sin(o)*0.25,
-      -0.28 + Math.cos(o)*0.4,    0.0, 1.0, 0.0
+      0 + Math.sin(o)*0.05,
+      -0.15 + Math.cos(o)*0.07,    0.0, 1.0, 0.0
         // 0,
       ];
   
       DONUT:
       var vert2 = [
-      0.6 + Math.sin(o)*0.12,
-      -0.28 + Math.cos(o)*0.181,    1.0, 0.0, 0.0
+      0 + Math.sin(o)*0.12,
+      -0.15 + Math.cos(o)*0.181,    1.0, 0.0, 0.0
       ];
       vertices5 = vertices5.concat(vert1);
       vertices5 = vertices5.concat(vert2);
@@ -135,6 +135,10 @@
   function render2(){
     // Bersihkan layar jadi hitam
     gl.useProgram(program2);
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  
+    // Bersihkan buffernya canvas
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
     if (scaleX >= 1) melebar = -1;
     else if (scaleX <= -1) melebar = 1; 
@@ -148,7 +152,7 @@
     requestAnimationFrame(render2);
 
 }
-  render();
+  // render();
   render2();
 
   function onmousedown(event, points) {
