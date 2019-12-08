@@ -11,26 +11,14 @@
     var fragmentShader = glUtils.getShader(gl, gl.FRAGMENT_SHADER, glUtils.SL.Shaders.v2.fragment);
     var program = glUtils.createProgram(gl, vertexShader, fragmentShader);
 
-    var thetaSpeed, mmLoc, mm, vmLoc, vm, pmLoc, pm, camera;
-    var dcLoc, dc, ddLoc, dd, acLoc, ac, nmLoc;
-    var vPosition, vColor, vNormal, vTexCoord;
-    var flag, flagUniformLocation, fFlagUniformLocation;
-
-    var canvas = document.getElementById("glcanvas");
-    var gl = glUtils.checkWebGL(canvas);
+    var thetaSpeed, mmLoc, mm, vmLoc, vm, pmLoc, pm, camera, dcLoc, dc, ddLoc, dd, acLoc, ac, nmLoc, vPosition, vColor, vNormal, flag, flagUniformLocation, fFlagUniformLocation;
 
     gl.useProgram(program);
     
     var transLoc = gl.getUniformLocation(program, 'trans');
     var trans = [0, 0, 0]; 
-    var X = 1.0;
-    var Y = 1.0;
-    var Z = 1.0;
-    var melebar = 1.0;
+    var X = 1.0, Y = 1.0, Z = 1.0, melebar = 1.0;
 
-    gl.useProgram(program);
-
-    var cubeVertices = [];
     var Kubus = [];
 
     // Posisi 8 titik kubus
@@ -64,6 +52,7 @@
       [ 0.0,  1.0,  0.0], // atas
       []
     ];
+
     var cubeTexCoords = [
       // u, v
       [ 0.0,  0.0],   // kiri bawah
@@ -86,6 +75,7 @@
         }
         switch (indices[i]) {
           case a:
+            // Dikali 0.125 untuk menyesuaikan ukuran gambar
             Kubus.push((a-2)*0.125);
             Kubus.push(0.0);
             break;
@@ -108,7 +98,7 @@
       }
     }
 
-    // quad(1, 0, 3, 2);
+    // quad(1, 0, 3, 2); sisi depan dihilangkan
     quad(2, 3, 7, 6);
     quad(3, 0, 4, 7);
     quad(4, 5, 6, 7);
@@ -119,6 +109,7 @@
     var vertices4 = [];
     var vertices5 = [];
 
+    // Setengah lingkaran atas
     for (var i=-180; i<=90; i+=1) {
       // degrees to radians
       var n = i * Math.PI / 180;
@@ -138,6 +129,7 @@
       vertices4 = vertices4.concat(vert2);
     }
   
+    // Setengah lingkaran bawah
     for (var i=0; i<=270; i+=1) {
       // degrees to radians
       var o = i * Math.PI / 180;
