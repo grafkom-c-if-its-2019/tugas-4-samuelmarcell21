@@ -8,32 +8,25 @@
   <title>Belajar WebGL</title>
 </head>
 
-<!-- <style>
-  * { margin: 10; padding: 10; } 
-  canvas { display: block; }
-</style> -->
-
 <body>
   
-  <canvas id="glcanvas" width="1280" height="600">
+  <canvas id="glcanvas" width="640" height="480">
     Browser Anda tidak mendukung HTML5 <code>&lt;canvas&gt;</code>.
   </canvas>
 
   <!-- Shaders -->
-  <script name="shader" data-src="vertex.glsl" data-type="vertex" data-version="v1"></script>
-  <script name="shader" data-src="fragment.glsl" data-type="fragment" data-version="v1"></script>
+  <script name="shader" data-src="vertex.glsl" data-type="vertex" data-version="v2"></script>
+  <script name="shader" data-src="fragment.glsl" data-type="fragment" data-version="v2"></script>
   
-  <script name="shader" data-src="vertex2.glsl" data-type="vertex" data-version="v2"></script>
-  <script name="shader" data-src="vertex3.glsl" data-type="vertex" data-version="v3"></script>
-
   <!-- JavaScript pembantu pembaca file eksternal -->
   <script type="text/javascript" src="libs/signals.js"></script>
+
+  <script type="text/javascript" src="libs/gl-matrix-min.js"></script>
   
   <!-- JavaScript penghubung ke WebGL -->
   <script type="text/javascript" src="libs/glUtils.js"></script>
   
   <!-- JavaScript utama -->
   <script type="text/javascript" src="index.js"></script>
-
 </body>
 </html>
