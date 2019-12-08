@@ -19,7 +19,7 @@
     var trans = [0, 0, 0]; 
     var X = 1.0, Y = 1.0, Z = 1.0, melebar = 1.0;
 
-    var Kubus = [];
+    var verticesKubus = [];
 
     // Posisi 8 titik kubus
     var cubePoints = [
@@ -65,31 +65,31 @@
       var indices = [a, b, c, a, c, d];
       for (var i=0; i < indices.length; i++) {
         for (var j=0; j < 3; j++) {
-          Kubus.push(cubePoints[indices[i]][j]);
+          verticesKubus.push(cubePoints[indices[i]][j]);
         }
         for (var j=0; j < 3; j++) {
-          Kubus.push(cubeColors[a][j]);
+          verticesKubus.push(cubeColors[a][j]);
         }
         for (var j=0; j < 3; j++) {
-          Kubus.push(-1*cubeNormals[a][j]);
+          verticesKubus.push(-1*cubeNormals[a][j]);
         }
         switch (indices[i]) {
           case a:
             // Dikali 0.125 untuk menyesuaikan ukuran gambar
-            Kubus.push((a-2)*0.125);
-            Kubus.push(0.0);
+            verticesKubus.push((a-2)*0.125);
+            verticesKubus.push(0.0);
             break;
           case b:
-            Kubus.push((a-2)*0.125);
-            Kubus.push(1.0);
+            verticesKubus.push((a-2)*0.125);
+            verticesKubus.push(1.0);
             break;
           case c:
-            Kubus.push((a-1)*0.125);
-            Kubus.push(1.0);
+            verticesKubus.push((a-1)*0.125);
+            verticesKubus.push(1.0);
             break;
           case d:
-            Kubus.push((a-1)*0.125);
-            Kubus.push(0.0);
+            verticesKubus.push((a-1)*0.125);
+            verticesKubus.push(0.0);
             break;
         
           default:
@@ -363,15 +363,15 @@
             [0.0, 0.0, -2.0], // ke mana kamera menghadap (vektor)
             [0.0, 1.0, 0.0]  // ke mana arah atas kamera (vektor)
           );
+
           gl.uniformMatrix4fv(vmLoc, false, vm);
-      
               
           gl.uniformMatrix4fv(mmLoc, false, mm);
       
           flag = 0;
           gl.uniform1i(flagUniformLocation, flag);
           gl.uniform1i(fFlagUniformLocation, flag);
-          drawCube(gl.TRIANGLES, Kubus, 30)
+          drawCube(gl.TRIANGLES, verticesKubus, 30)
       
           gl.disableVertexAttribArray(vNormal);
           gl.disableVertexAttribArray(vTexCoord);
